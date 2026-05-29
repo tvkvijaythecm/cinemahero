@@ -1,0 +1,364 @@
+/* ================================================================
+   VideoIntro.module.css — Cinematic Portfolio Hero
+   Dark warm aesthetic · Glassmorphism controls · Premium motion
+   ================================================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #050505;
+  isolation: isolate;
+}
+
+/* ---- Blurred ambient background ---- */
+.bgBlur {
+  position: absolute;
+  inset: -50px;
+  z-index: 0;
+  overflow: hidden;
+  filter: blur(48px) saturate(1.5) brightness(0.55);
+  opacity: 0.45;
+  transform: scale(1.05);
+}
+
+.bgVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Dark gradient base ---- */
+.gradientBase {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 80% 65% at 58% 42%, rgba(22, 13, 4, 0.25) 0%, rgba(4, 4, 10, 0.9) 100%);
+  pointer-events: none;
+}
+
+/* ---- Foreground video ---- */
+.videoWrap {
+  position: absolute;
+  bottom: 0;
+  right: 7%;
+  z-index: 3;
+  width: 43%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.mainVideo {
+  width: 100%;
+  height: 108%;
+  object-fit: cover;
+  object-position: center top;
+  filter: contrast(1.06) saturate(1.08);
+}
+
+.videoEdgeFade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, #050505 0%, transparent 28%, transparent 72%, #050505 100%),
+    linear-gradient(to top,   #050505 0%, transparent 22%);
+}
+
+/* ---- Vignette lens ---- */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: radial-gradient(
+    ellipse 92% 92% at 50% 50%,
+    transparent 38%,
+    rgba(2, 2, 6, 0.65) 100%
+  );
+  pointer-events: none;
+}
+
+/* ---- Copy / content overlay ---- */
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 6% 0 7.5%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.tagline {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: #E8783A;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.1rem;
+  overflow: hidden;
+}
+
+.nameFirst,
+.nameLast {
+  display: block;
+  font-family: var(--font-bebas, 'Bebas Neue', sans-serif);
+  font-size: clamp(68px, 9.2vw, 132px);
+  line-height: 0.91;
+  letter-spacing: 0.025em;
+  will-change: transform;
+}
+
+.nameFirst {
+  color: #ffffff;
+}
+
+.nameLast {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.42);
+}
+
+.role {
+  margin-top: 1.5rem;
+  font-family: var(--font-cormorant, 'Cormorant Garamond', serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.35vw, 20px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.07em;
+  max-width: 380px;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.divider {
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(to right, #E8783A, transparent);
+  margin: 1.7rem 0;
+}
+
+.stats {
+  display: flex;
+  gap: 2.8rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.statNum {
+  font-family: var(--font-bebas, 'Bebas Neue', sans-serif);
+  font-size: 28px;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.statLabel {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 9px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ---- Sound hint badge ---- */
+.soundHint {
+  position: absolute;
+  bottom: 2.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 100px;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+  white-space: nowrap;
+}
+
+.soundHintHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hintDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E8783A;
+  flex-shrink: 0;
+  animation: pulseDot 1.9s ease infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1;  transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.55); }
+}
+
+/* ---- Glassmorphism control buttons ---- */
+.controls {
+  position: absolute;
+  bottom: 2.4rem;
+  right: 6%;
+  z-index: 6;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.ctrlBtn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.065);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+  outline: none;
+}
+
+.ctrlBtn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.26);
+  transform: scale(1.06);
+}
+
+.ctrlBtn:active {
+  transform: scale(0.96);
+}
+
+/* ---- Scroll indicator ---- */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.2rem;
+  left: calc(50% - 90px);
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scrollIndicator:hover {
+  opacity: 0.7;
+}
+
+.scrollLabel {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  color: rgba(255, 255, 255, 0.28);
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollLine::after {
+  content: '';
+  position: absolute;
+  top: -42px;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  background: linear-gradient(to bottom, transparent, #E8783A, transparent);
+  animation: scrollPulse 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes scrollPulse {
+  0%   { top: -42px; }
+  100% { top: 84px; }
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 768px) {
+  .videoWrap {
+    width: 100%;
+    right: 0;
+    opacity: 0.5;
+  }
+
+  .content {
+    padding: 0 5% 0 6%;
+    justify-content: flex-end;
+    padding-bottom: 30%;
+    z-index: 5;
+  }
+
+  .nameFirst,
+  .nameLast {
+    font-size: clamp(56px, 14vw, 80px);
+  }
+
+  .role {
+    max-width: 280px;
+  }
+
+  .stats {
+    gap: 1.8rem;
+  }
+
+  .controls {
+    right: 5%;
+    bottom: 2rem;
+  }
+
+  .scrollIndicator {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
